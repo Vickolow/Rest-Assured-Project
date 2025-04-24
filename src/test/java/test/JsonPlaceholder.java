@@ -19,9 +19,15 @@ public class JsonPlaceholder {
     public void getAllPosts(){
         Response response = RestAssured.given()
                 .when()
-                .get("/post");
+                .get("/posts");
         TestUtility.verifyStatusCode(response, 200);
-        TestUtility.verifyResponseTime(response,4500);
+    }
+    @Test
+    public void getTimeResponse(){
+        Response response = RestAssured.given()
+                .when()
+                .get("/posts");
+        TestUtility.verifyResponseTime(response,1500);
     }
 
 }
